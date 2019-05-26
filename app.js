@@ -23,9 +23,7 @@ db.once('open', () => {
 })
 
 //路由
-app.get('/', (req, res) => {
-  res.rend('hello')
-})
+app.use('/', require('./routes/home'))
 
 app.listen(3000, () => {
   console.log('App is running')
