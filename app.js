@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   next()
 })
 
-mongoose.connect('mongodb://localhost/shortener', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shortener', { useNewUrlParser: true })
 
 const db = mongoose.connection
 
@@ -39,6 +39,6 @@ db.once('open', () => {
 //路由
 app.use('/', require('./routes/home'))
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('App is running')
 })
